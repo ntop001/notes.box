@@ -26,14 +26,19 @@
 		}
 
 		.hbox {
-			display: inline-block;
+			display: inline-flex;
 			margin-left: 16px;
+			align-items: center;
 		}
 		.hbox > * {
 			margin-right: 16px;
 		}
 		.hbox > audio {
 			display: none;
+		}
+		.hbox > img {
+			width: 16px;
+			height: 16px;
 		}
 </style>
 </head>	
@@ -45,6 +50,7 @@
 		<button id="pause">Pause</button>
 		<button id="shuffle">Shuffle</button>
 		<audio id="player" controls><source src="0.mp3" type="audio/mp3"></audio>
+		<img style="display: none;"  id="indicator" src="imgs/481.gif" />	
 	</div>	
 </div>
 <div class="flex-container">
@@ -311,6 +317,15 @@
  		player.load();
  		player.play();
     });
+
+    // indicator player status
+    var indicator = document.getElementById("indicator")
+    player.addEventListener('pause',function(){
+    	indicator.style.display = "none";
+    })
+    player.addEventListener('playing',function(){
+    	indicator.style.display = "block";
+    })
 
     // play
     var play = document.getElementById("play")
