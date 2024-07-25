@@ -24,11 +24,28 @@
 		a: visited {
 			color: #551A8B; 
 		}
+
+		.hbox {
+			display: inline-block;
+			margin-left: 16px;
+		}
+		.hbox > * {
+			margin-right: 16px;
+		}
+		.hbox > audio {
+			display: none;
+		}
 </style>
 </head>	
 <body>
 <div>
 	<a href="https://notes.box/">首页</a> | 新概念第四册48篇 - ₍˄·͈༝·͈˄*₎◞ ̑̑  ~miow~ 
+	<div class="hbox">
+		<button id="play">Play</button>
+		<button id="pause">Pause</button>
+		<button id="shuffle">Shuffle</button>
+		<audio id="player" autoplay controls><source src="0.mp3" type="audio/mp3"></audio>
+	</div>	
 </div>
 <div class="flex-container">
 <div class="row">
@@ -181,4 +198,55 @@
 </div>
 <div>
 </body>
+<script>
+	var audios = []
+	for (var i = 1; i <= 48; i++) {
+   		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/46/${i}.mp3`);
+	}
+    var x = 0;
+    var player = document.getElementById("player");
+    player.src = audios[0]
+
+    // play next
+    player.addEventListener('ended',function(){
+      	player.pause();
+ 		player.src = audios[x++%audios.length]
+ 		player.load();
+ 		player.play();
+    });
+
+    // play
+    var play = document.getElementById("play")
+    play.addEventListener('click', function() {
+    	player.load();
+ 		player.play();
+    })
+
+    // pause
+    var pause = document.getElementById("pause")
+    pause.addEventListener('click', function() {
+    	player.pause()
+    })
+
+    // shuffle
+    var shuffle = document.getElementById("shuffle")
+    shuffle.addEventListener('click', function() {
+    	shuffleArray(audios)
+    	
+    	// play next
+    	player.pause();
+ 		player.src = audios[x++%audios.length]
+ 		player.load();
+ 		player.play();
+    })
+
+    function shuffleArray(array) {
+	    for (var i = array.length - 1; i > 0; i--) {
+	        var j = Math.floor(Math.random() * (i + 1));
+	        var temp = array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
+	    }
+	}
+</script>
 </html>
