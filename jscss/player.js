@@ -8,7 +8,7 @@ function setupPlayerNC2_0() {
 
 function setupPlayerNC2_1() {
 	var audios = []
-	for (var i = 48; i <= 96; i++) {
+	for (var i = 49; i <= 96; i++) {
    		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/44/${i}.mp3`);
 	}
 	setupAudioPlayer(audios)
