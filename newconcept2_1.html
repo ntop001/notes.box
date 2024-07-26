@@ -1,46 +1,14 @@
 <html>
 <head>
 	<title>新概念第二册96篇(下)</title>
-	<style>
-		.flex-container {
-  			display: flex;
-  			width: 100%;
-		}
-
-		.flex-container > div {
-  			margin: 10px;
-  			padding: 20px;
-  			font-size: 18px;
-		}
-
-		.row {
-			width: 60%;
-			border: 1px solid black;
-		}
-
-		a {
-			color: #555;
-		}
-		a: visited {
-			color: #551A8B; 
-		}
-
-		.hbox {
-			display: inline-flex;
-			margin-left: 16px;
-			align-items: center;
-		}
-		.hbox > * {
-			margin-right: 16px;
-		}
-		.hbox > audio {
-			display: none;
-		}
-		.hbox > img {
-			width: 16px;
-			height: 16px;
-		}
-</style>
+	<link rel="stylesheet" href="jscss/page.css"/>
+	<script src="jscss/player.js"></script>
+	<script>
+		window.onload = (event) => {
+  			console.log("page is fully loaded");
+  			setupPlayerNC2_1()
+		};
+	</script>
 </head>	
 <body>
 <div>
@@ -252,64 +220,4 @@
 </div>
 <div>
 </body>
-<script>
-	var audios = []
-	for (var i = 48; i <= 96; i++) {
-   		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/44/${i}.mp3`);
-	}
-    var x = 0;
-    var player = document.getElementById("player");
-    player.src = audios[0]
-
-    // play next
-    player.addEventListener('ended',function(){
-      	player.pause();
- 		player.src = audios[x++%audios.length]
- 		player.load();
- 		player.play();
-    });
-
-    // indicator player status
-    var indicator = document.getElementById("indicator")
-    player.addEventListener('pause',function(){
-    	indicator.style.display = "none";
-    })
-    player.addEventListener('playing',function(){
-    	indicator.style.display = "block";
-    })
-
-    // play
-    var play = document.getElementById("play")
-    play.addEventListener('click', function() {
-    	player.load();
- 		player.play();
-    })
-
-    // pause
-    var pause = document.getElementById("pause")
-    pause.addEventListener('click', function() {
-    	player.pause()
-    })
-
-    // shuffle
-    var shuffle = document.getElementById("shuffle")
-    shuffle.addEventListener('click', function() {
-    	shuffleArray(audios)
-    	
-    	// play next
-    	player.pause();
- 		player.src = audios[x++%audios.length]
- 		player.load();
- 		player.play();
-    })
-
-    function shuffleArray(array) {
-	    for (var i = array.length - 1; i > 0; i--) {
-	        var j = Math.floor(Math.random() * (i + 1));
-	        var temp = array[i];
-	        array[i] = array[j];
-	        array[j] = temp;
-	    }
-	}
-</script>
 </html>
