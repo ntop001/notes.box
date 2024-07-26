@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>新概念听力</title>
 	<style>
 		.flex-container {
   			display: flex;
@@ -34,10 +35,24 @@
 			margin: 30px;
 			padding: 60px 30px;
 		}
-</style>
+	</style>
+	<script>
+		window.onload = (event) => {
+  			var sayings = [
+  				"Knowlege is power!",
+  				"Awareness of ignorance is the beigining of widsom!",
+  				"Familiar notions are often the least examined!",
+  				"Mutual ignorance breeds mutual distrust!",
+  				"Genius is 1 percent inspiration and 99 percent perspiration.",
+  			]
+  			var i = Math.floor(Math.random() * sayings.length);
+  			var saying = document.getElementById("saying")
+  			saying.textContent = sayings[i]
+		};
+	</script>
 </head>	
 <body>
-<div>新概念听力</div>
+<div>新概念听力 - <span style="font-style: italic;" id="saying"></span> </div>
 <div class="flex-container">
 	<a href="newconcept4.html" class="card">
 		<h3>新概念第四册48篇</h3>
