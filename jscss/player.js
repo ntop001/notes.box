@@ -31,7 +31,7 @@ function setupPlayerNC4() {
 function setupAudioPlayer(audios) {
 	var x = 0;
     var player = document.getElementById("player");
-    player.src = audios[0]
+    player.src = audios[x++]
 
     // play next
     player.addEventListener('ended',function(){
