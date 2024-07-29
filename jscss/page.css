@@ -36,3 +36,8 @@ a: visited {
 	width: 16px;
 	height: 16px;
 }
+
+.mascot {
+	display: inline-block;
+	margin: 0px;
+}
