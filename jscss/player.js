@@ -37,8 +37,7 @@ function setupAudioPlayer(audios) {
     player.addEventListener('ended',function(){
       	player.pause();
  		player.src = audios[x++%audios.length]
- 		player.load();
- 		player.play();
+ 		playAudio(player, 3000)
     });
 
     // indicator player status
@@ -53,8 +52,7 @@ function setupAudioPlayer(audios) {
     // play
     var play = document.getElementById("play")
     play.addEventListener('click', function() {
-    	player.load();
- 		player.play();
+    	playAudio(player, 1000)
     })
 
     // pause
@@ -71,10 +69,17 @@ function setupAudioPlayer(audios) {
     	// play next
     	player.pause();
  		player.src = audios[x++%audios.length]
- 		player.load();
- 		player.play();
+ 		playAudio(player, 1000)
     })
 }
+
+// play audio with timeout
+function playAudio(player, timeout) {
+	player.load();
+	setTimeout(function() {
+		player.play();
+	}, timeout || 3000);
+} 
 
 // shuffle array
 function shuffleArray(array) {
