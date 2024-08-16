@@ -44,9 +44,11 @@ function setupAudioPlayer(audios) {
     var indicator = document.getElementById("indicator")
     player.addEventListener('pause',function(){
     	indicator.style.display = "none";
+    	pause.innerText = "Resume"
     })
     player.addEventListener('playing',function(){
     	indicator.style.display = "block";
+    	pause.innerText = "Pause"
     })
 
     // play
@@ -58,7 +60,11 @@ function setupAudioPlayer(audios) {
     // pause
     var pause = document.getElementById("pause")
     pause.addEventListener('click', function() {
-    	player.pause()
+    	if (pause.innerText === "Resume") {
+    		player.play()
+    	} else {
+    		player.pause()
+    	}
     })
 
     // shuffle
