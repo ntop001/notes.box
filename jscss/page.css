@@ -21,6 +21,10 @@ a: visited {
 	color: #551A8B; 
 }
 
+#pause {
+	width: 64px;
+}
+
 .hbox {
 	display: inline-flex;
 	margin-left: 16px;
