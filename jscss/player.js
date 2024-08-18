@@ -64,19 +64,8 @@ function setupAudioPlayer(book, audios) {
     	x = 0
     	audios = [...NC_Audios]
     	player.src = audios[x]
+    	alert("Trick: reset index to " + x + "\n" + audios)
     }
-    
-    // long lick, reset index
-    var startTime
-    play.addEventListener('mousedown', function() {
-    	startTime = new Date().getTime();
-    })
-    play.addEventListener('mouseup', function() {
-    	var endTime = new Date().getTime();
-    	if (endTime - startTime > 500) {
-    		play.onLongClick()
-    	}
-    })
 
     // pause
     var pause = document.getElementById("pause")
@@ -85,6 +74,18 @@ function setupAudioPlayer(book, audios) {
     		player.play()
     	} else {
     		player.pause()
+    	}
+    })
+
+    // long lick, reset index
+    var startTime
+    play.addEventListener('mouseup', function() {
+    	startTime = new Date().getTime();
+    })
+    pause.addEventListener('mouseup', function() {
+    	var endTime = new Date().getTime();
+    	if (endTime - startTime < 500) {
+    		play.onLongClick()
     	}
     })
 
