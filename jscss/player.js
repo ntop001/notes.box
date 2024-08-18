@@ -64,7 +64,7 @@ function setupAudioPlayer(book, audios) {
     	x = 0
     	audios = [...NC_Audios]
     	player.src = audios[x]
-    	alert("Trick: reset index to " + x + "\n" + audios)
+    	alert("YAHAHA! You find the trick: Reset All State.")
     }
 
     // pause
@@ -93,7 +93,8 @@ function setupAudioPlayer(book, audios) {
     var shuffle = document.getElementById("shuffle")
     shuffle.addEventListener('click', function() {
     	shuffleArray(audios)
-    	
+    	player.src = audios[x]
+
     	// play next
     	player.pause();
  		playAudio(player, 1000)
