@@ -29,6 +29,7 @@ function setupPlayerNC4() {
 
 // setup audio player
 function setupAudioPlayer(book, audios) {
+	var NC_Audios = [...audios]
 	var x = getIndex(book);
     var player = document.getElementById("player");
     player.src = audios[x%audios.length]
@@ -61,6 +62,7 @@ function setupAudioPlayer(book, audios) {
     play.onLongClick = () => {
     	setIndex(book, 0)
     	x = 0
+    	audios = [...NC_Audios]
     	player.src = audios[x]
     }
     
