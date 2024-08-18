@@ -58,6 +58,11 @@ function setupAudioPlayer(book, audios) {
     play.addEventListener('click', function() {
     	playAudio(player, 1000)
     })
+    play.onLongClick = () => {
+    	setIndex(book, 0)
+    	x = 0
+    	player.src = audios[x]
+    }
     
     // long lick, reset index
     var startTime
@@ -70,11 +75,6 @@ function setupAudioPlayer(book, audios) {
     		play.onLongClick()
     	}
     })
-    play.onLongClick = () => {
-    	setIndex(book, 0)
-    	x = getIndex(book)
-    	alert("Reset index to " + x)
-    }
 
     // pause
     var pause = document.getElementById("pause")
