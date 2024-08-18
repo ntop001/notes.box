@@ -74,7 +74,6 @@ function setupAudioPlayer(audios) {
     	
     	// play next
     	player.pause();
- 		player.src = audios[x++%audios.length]
  		playAudio(player, 1000)
     })
 }
