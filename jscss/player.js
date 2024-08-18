@@ -3,7 +3,7 @@ function setupPlayerNC2_0() {
 	for (var i = 1; i <= 48; i++) {
    		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/44/${i}.mp3`);
 	}
-	setupAudioPlayer(audios)
+	setupAudioPlayer('nc20', audios)
 }
 
 function setupPlayerNC2_1() {
@@ -11,12 +11,12 @@ function setupPlayerNC2_1() {
 	for (var i = 49; i <= 96; i++) {
    		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/44/${i}.mp3`);
 	}
-	setupAudioPlayer(audios)
+	setupAudioPlayer('nc21', audios)
 }
 
 function setupPlayerNC3() {
 	var audios = NC3_Audios
-	setupAudioPlayer(audios)
+	setupAudioPlayer('nc30', audios)
 }
 
 function setupPlayerNC4() {
@@ -24,19 +24,21 @@ function setupPlayerNC4() {
 	for (var i = 1; i <= 48; i++) {
    		audios.push(`https://online1.tingclass.net/lesson/shi0529/0000/46/${i}.mp3`);
 	}
-	setupAudioPlayer(audios)
+	setupAudioPlayer('nc40', audios)
 }
 
 // setup audio player
-function setupAudioPlayer(audios) {
-	var x = 0;
+function setupAudioPlayer(book, audios) {
+	var x = getIndex(book);
     var player = document.getElementById("player");
-    player.src = audios[x++]
+    player.src = audios[x%audios.length]
 
     // play next
     player.addEventListener('ended',function(){
       	player.pause();
- 		player.src = audios[x++%audios.length]
+      	x = (x+1)%audios.length
+ 		player.src = audios[x]
+ 		setIndex(book, x)
  		playAudio(player, 3000)
     });
 
@@ -94,6 +96,15 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+}
+
+// progress 
+function getIndex(key) {
+	return localStorage.getItem(key) || 0
+}
+
+function setIndex(key, i) {
+	localStorage.setItem(key, i)
 }
 
 // nc3 audios
