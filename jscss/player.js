@@ -121,7 +121,7 @@ function shuffleArray(array) {
 
 // progress 
 function getIndex(key) {
-	return localStorage.getItem(key) || 0
+	return (localStorage.getItem(key) || 0) - 0
 }
 
 function setIndex(key, i) {
